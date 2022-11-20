@@ -3,7 +3,7 @@ package dashboard;
 import mgr.Factory; 
 import mgr.Manager;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -118,8 +118,8 @@ public class Dashboard {
     	
         JFrame frame = new JFrame("Dashboard");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(1200, 600));
-        frame.setSize(1000, 600);
+        frame.setPreferredSize(new Dimension(1440, 800));
+        frame.setSize(1440, 800);
         frame.setLocationRelativeTo(null);
 
         DashboardPanel newContentPane = new DashboardPanel();

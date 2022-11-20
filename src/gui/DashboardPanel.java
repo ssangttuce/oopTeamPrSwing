@@ -16,27 +16,19 @@ import dashboard.Task;
 import mgr.Manager;
 
 public class DashboardPanel extends JPanel implements ActionListener, ListSelectionListener {
-
     private static final long serialVersionUID = 1L;
 
-
     public DashboardPanel() {
-//        super(new GridBagLayout());
         super(new BorderLayout());
-        //GridBagConstraints gbc = new GridBagConstraints();
-//        gbc.fill = GridBagConstraints.NONE;
-//
-//        gbc.weighty = 0.1;
-//        gbc.gridx = 0;
-//        gbc.gridy = 0;
-//        add
-
         setSize(new Dimension(1400, 1200));
-        setBackground(Color.GRAY);
-        setBorder(BorderFactory.createLineBorder(Color.YELLOW));
-
+        setBackground(new Color(25, 25, 25, 255));
         setSearchArea(new SearchPanel());
         makeSchedulePanel(Dashboard.scheduleMgr);
+
+        JPanel div = new JPanel();
+        div.setPreferredSize(new Dimension(1400, 80));
+        div.setBackground(new Color(25, 25, 25, 255));
+        add(div, BorderLayout.SOUTH);
     }
 
     private void setSearchArea(JPanel searchPanel) {
@@ -44,14 +36,20 @@ public class DashboardPanel extends JPanel implements ActionListener, ListSelect
         JPanel searchArea = new JPanel();
         searchArea.setLayout(new BorderLayout());
         searchArea.setSize(new Dimension(1400, 50));
-
+        searchArea.setBackground(new Color(0, 0, 0, 0));
         searchArea.add(searchPanel, BorderLayout.EAST);
         add(searchArea, BorderLayout.NORTH);
     }
 
     private void makeSchedulePanel(Manager scheduleMgr) {
         JPanel schedulePanel = new JPanel(new GridLayout(1, scheduleMgr.mList.size()));
-        schedulePanel.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+//        JPanel schedulePanel = new JPanel();
+//        schedulePanel.setLayout(new BoxLayout(schedulePanel, BoxLayout.X_AXIS));
+        schedulePanel.setBackground(new Color(0, 0, 0, 0));
+        schedulePanel.setMinimumSize(new Dimension(1400, 600));
+        schedulePanel.setPreferredSize(new Dimension(1400, 600));
+        schedulePanel.setMaximumSize(new Dimension(1400, 600));
+        schedulePanel.setBackground(new Color(0, 0, 0, 0));
         for (Schedule s : Dashboard.scheduleMgr.mList) {
             schedulePanel.add(new SchedulePanel(s));
         }
