@@ -20,7 +20,7 @@ public class DashboardPanel extends JPanel implements ActionListener, ListSelect
 
     public DashboardPanel() {
         super(new BorderLayout());
-        setSize(new Dimension(1400, 1200));
+        setSize(new Dimension(1400, 800));
         setBackground(new Color(25, 25, 25, 255));
         setSearchArea(new SearchPanel());
         makeSchedulePanel(Dashboard.scheduleMgr);

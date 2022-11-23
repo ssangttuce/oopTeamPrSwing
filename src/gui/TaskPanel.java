@@ -5,24 +5,30 @@ import dashboard.Task;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class TaskPanel extends TaskDetailPanel {
+public class TaskPanel extends JPanel implements ActionListener {
+    TaskDetailPanel detail;
     public TaskPanel(Task task) {
-        setLayout(new GridLayout(1, 2));
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setPreferredSize(new Dimension(300, 80));
         setMinimumSize(new Dimension(300, 80));
         setMaximumSize(new Dimension(300, 80));
         setBackground(new Color(27, 45, 56));
         setBorder(BorderFactory.createLineBorder(new Color(27, 31, 34, 255), 1, true));
 
-
+        detail = new TaskDetailPanel(task);
+        add(setImportanceColor());
         add(setTaskInfoPanel(task));
         add(setTaskProgrsPanel(task));
     }
 
     private JPanel setTaskInfoPanel(Task task) {
         JPanel taskInfo = new JPanel(new GridLayout(2, 1));
-        taskInfo.setPreferredSize(new Dimension(120, 70));
+        taskInfo.setMinimumSize(new Dimension(135, 80));
+        taskInfo.setPreferredSize(new Dimension(135, 80));
+        taskInfo.setMaximumSize(new Dimension(135, 80));
         taskInfo.setBackground(new Color(0, 0, 0, 0));
 
         JLabel name = new JLabel(task.getName());
@@ -38,9 +44,11 @@ public class TaskPanel extends TaskDetailPanel {
         return taskInfo;
     }
 
-    private JPanel setTaskProgrsPanel(Task task){
+    private JPanel setTaskProgrsPanel(Task task) {
         JPanel taskProgress = new JPanel(new BorderLayout());
-        taskProgress.setSize(new Dimension(120, 70));
+        taskProgress.setMinimumSize(new Dimension(135, 80));
+        taskProgress.setPreferredSize(new Dimension(135, 80));
+        taskProgress.setMaximumSize(new Dimension(135, 80));
         taskProgress.setBackground(new Color(0, 0, 0, 0));
 
         JButton viewDetail = new JButton("•••");
@@ -48,6 +56,8 @@ public class TaskPanel extends TaskDetailPanel {
         viewDetail.setBackground(new Color(37, 37, 37));
         viewDetail.setForeground(new Color(137, 137, 137));
         viewDetail.setBorder(new EmptyBorder(0, 0, 0, 0));
+
+        viewDetail.addActionListener(this);
 
 
         JPanel btnPanel = new JPanel(new BorderLayout());
@@ -76,8 +86,26 @@ public class TaskPanel extends TaskDetailPanel {
         return taskProgress;
     }
 
-    private void setImportanceColor() {
+    private JPanel setImportanceColor() {
+        JPanel colorPanel = new JPanel();
+        colorPanel.setMinimumSize(new Dimension(30, 80));
+        colorPanel.setPreferredSize(new Dimension(30, 80));
+        colorPanel.setMaximumSize(new Dimension(30, 80));
 
+        colorPanel.setBackground(getImportanceColor());
+        colorPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
+
+        return colorPanel;
     }
 
+    Color getImportanceColor() {//need to change form to get importance from Task Class
+        Color color = new Color(255, 106, 0);
+        return color;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        detail.pack();
+        detail.setVisible(true);
+    }
 }

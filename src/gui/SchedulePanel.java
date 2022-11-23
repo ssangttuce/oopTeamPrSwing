@@ -27,14 +27,14 @@ public class SchedulePanel extends JPanel {
         taskScroll.setPreferredSize(new Dimension(340, 600));
         taskScroll.setBackground(new Color(0, 0, 0, 0));
         taskScroll.setBorder(new EmptyBorder(0, 0, 0, 0));
-        taskScroll.getVerticalScrollBar().setBackground(Color.BLACK);
-        taskScroll.getVerticalScrollBar().setBorder(new EmptyBorder(0, 0, 0, 0));
-        taskScroll.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-            @Override
-            protected void configureScrollBarColors() {
-                this.thumbColor = Color.BLACK;
-            }
-        });
+//        taskScroll.getVerticalScrollBar().setBackground(Color.BLACK);
+//        taskScroll.getVerticalScrollBar().setBorder(new EmptyBorder(0, 0, 0, 0));
+//        taskScroll.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+//            @Override
+//            protected void configureScrollBarColors() {
+//                this.thumbColor = Color.BLACK;
+//            }
+//        });
         taskScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         add(taskScroll);
 
@@ -66,8 +66,8 @@ public class SchedulePanel extends JPanel {
         taskBoard.setBackground(new Color(0, 0, 0, 0));
         taskBoard.setBorder(new EmptyBorder(0, 0, 0, 0));
 
-        for (Task t : schedule.taskList) {
-            taskBoard.add(new TaskPanel(t));
+        for (Task task : schedule.taskList) {
+            taskBoard.add(new TaskPanel(task));
         }
         taskBoard.add(setAddBtnPanel());
 
