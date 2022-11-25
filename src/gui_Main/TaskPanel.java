@@ -1,4 +1,4 @@
-package gui;
+package gui_Main;
 
 import dashboard.Task;
 
@@ -10,14 +10,15 @@ import java.awt.event.ActionListener;
 
 public class TaskPanel extends JPanel implements ActionListener {
     TaskDetailPanel detail;
+
     public TaskPanel(Task task) {
+
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setPreferredSize(new Dimension(300, 80));
         setMinimumSize(new Dimension(300, 80));
         setMaximumSize(new Dimension(300, 80));
         setBackground(new Color(27, 45, 56));
-        setBorder(BorderFactory.createLineBorder(new Color(27, 31, 34, 255), 1, true));
-
+        setBorder(BorderFactory.createLineBorder(new Color(27, 31, 34, 255), 2, true));
         detail = new TaskDetailPanel(task);
         add(setImportanceColor());
         add(setTaskInfoPanel(task));

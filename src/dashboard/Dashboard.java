@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 
-import gui.DashboardPanel;
+import gui_Main.DashboardPanel;
 
 
 public class Dashboard {

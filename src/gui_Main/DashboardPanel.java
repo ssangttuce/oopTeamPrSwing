@@ -1,18 +1,15 @@
-package gui;
+package gui_Main;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashSet;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
 
 import dashboard.Dashboard;
 import dashboard.Schedule;
-import dashboard.Task;
 import mgr.Manager;
 
 public class DashboardPanel extends JPanel implements ActionListener, ListSelectionListener {

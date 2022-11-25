@@ -1,11 +1,10 @@
-package gui;
+package gui_Main;
 
 import dashboard.Schedule;
 import dashboard.Task;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 
@@ -16,6 +15,7 @@ public class SchedulePanel extends JPanel {
         setPreferredSize(new Dimension(340, 600));
         setMaximumSize(new Dimension(340, 600));
         setBackground(new Color(27, 31, 34, 255));
+
         read(schedule);
     }
 
@@ -35,6 +35,7 @@ public class SchedulePanel extends JPanel {
 //                this.thumbColor = Color.BLACK;
 //            }
 //        });
+        taskScroll.getVerticalScrollBar().setUnitIncrement(16);
         taskScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         add(taskScroll);
 
@@ -63,14 +64,12 @@ public class SchedulePanel extends JPanel {
 //        taskBoard.setMinimumSize(new Dimension(340, 540)); //if you set preferredsize, scroll never show
 //        taskBoard.setPreferredSize(new Dimension(340, 540));
 //        taskBoard.setMaximumSize(new Dimension(340, 540));
-        taskBoard.setBackground(new Color(0, 0, 0, 0));
+        taskBoard.setBackground(new Color(27, 31, 34, 255));
         taskBoard.setBorder(new EmptyBorder(0, 0, 0, 0));
-
         for (Task task : schedule.taskList) {
             taskBoard.add(new TaskPanel(task));
         }
         taskBoard.add(setAddBtnPanel());
-
         return taskBoard;
     }
 

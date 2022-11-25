@@ -43,7 +43,7 @@ class Daily implements Manageable {
     }
 
     public String getName() {
-        return String.format("[%s] ", name);
+        return String.format("%s ", name);
     }
 
     public String getContent() {
