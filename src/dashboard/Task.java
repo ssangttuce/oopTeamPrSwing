@@ -12,23 +12,6 @@ public class Task extends Daily {
     String importanceLabel;
     Color importanceColor;
 
-    public double getProgressPercent() {
-		return progressPercent;
-	}
-
-	public void setProgressPercent(double progressPercent) {
-		this.progressPercent = progressPercent;
-	}
-	
-	public String getImportance() {
-		return null;
-	}
-	
-	public void setImportance(String label, Color color) {
-		this.importanceLabel = label;
-		this.importanceColor = color;
-	}
-
 	@Override
     public void read(Scanner scan) {
         super.read(scan);//name, content input
@@ -72,6 +55,15 @@ public class Task extends Daily {
             default -> throw new IllegalArgumentException("Unexpected value: " + hashtag.charAt(0));
         };
     }
+    
+    public void setProgressPercent(double progressPercent) {
+		this.progressPercent = progressPercent;
+	}
+
+    public void setImportance(String label, Color color) {
+		this.importanceLabel = label;
+		this.importanceColor = color;
+	}
 
     @Override
     public void print() {
@@ -101,6 +93,17 @@ public class Task extends Daily {
         }
         return tagString.toString();
     }
+    public double getProgressPercent() {
+		return progressPercent;
+	}
+	
+    public String getImportanceLabel() {
+		return this.importanceLabel;
+	}
+	
+    public Color getImportanceColor() {
+		return this.importanceColor;
+	}
 
     public int progressLvl() {
         if (start_Date == null)
