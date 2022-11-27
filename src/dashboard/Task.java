@@ -1,5 +1,6 @@
 package dashboard;
 
+import java.awt.Color;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -7,8 +8,28 @@ public class Task extends Daily {
     String start_Date;
     String end_Date;
     HashSet<String> tag = new HashSet<>();
+    double progressPercent;
+    String importanceLabel;
+    Color importanceColor;
 
-    @Override
+    public double getProgressPercent() {
+		return progressPercent;
+	}
+
+	public void setProgressPercent(double progressPercent) {
+		this.progressPercent = progressPercent;
+	}
+	
+	public String getImportance() {
+		return null;
+	}
+	
+	public void setImportance(String label, Color color) {
+		this.importanceLabel = label;
+		this.importanceColor = color;
+	}
+
+	@Override
     public void read(Scanner scan) {
         super.read(scan);//name, content input
         setDate(scan);
@@ -17,7 +38,7 @@ public class Task extends Daily {
         scan.nextLine();
     }
 
-    private void setDate(Scanner scan) {
+    public void setDate(Scanner scan) {
         System.out.format("시작 날짜 입력: ");
         this.start_Date = scan.next();
         System.out.print("\b".repeat("시작 날짜 입력: ".length()));
@@ -31,7 +52,7 @@ public class Task extends Daily {
         scan.nextLine();
     }
 
-    private boolean setTag(Scanner scan) {// #tag는 태그 추가 -tag는 태그 삭제
+    public boolean setTag(Scanner scan) {// #tag는 태그 추가 -tag는 태그 삭제
         System.out.format("\'#태그\'를 입력하세요: ");
         String hashtag = scan.next();
         System.out.print("\b".repeat("\'#태그\'를 입력하세요: ".length()));
