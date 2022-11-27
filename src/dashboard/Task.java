@@ -11,8 +11,8 @@ public class Task extends Daily {
     double progressPercent;
     String importanceLabel;
     Color importanceColor;
-
-	@Override
+    
+    @Override
     public void read(Scanner scan) {
         super.read(scan);//name, content input
         setDate(scan);
