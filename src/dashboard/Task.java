@@ -8,6 +8,7 @@ public class Task extends Daily {
     String start_Date;
     String end_Date;
     HashSet<String> tag = new HashSet<>();
+    static HashSet<String> tagPrint = new HashSet<>();
     double progressPercent;
     String importanceLabel;
     Color importanceColor;
@@ -39,7 +40,7 @@ public class Task extends Daily {
         System.out.format("\'#태그\'를 입력하세요: ");
         String hashtag = scan.next();
         System.out.print("\b".repeat("\'#태그\'를 입력하세요: ".length()));
-        return switch (hashtag.charAt(0)) {
+        boolean reading = switch (hashtag.charAt(0)) {
             case '#' -> {
                 if (tag.size() > 5) {
                     System.out.println("태그 수가 5개 이상입니다.");
@@ -50,10 +51,13 @@ public class Task extends Daily {
             }
             case '-' -> {
                 tag.remove("#" + hashtag.substring(1));
+                tagPrint.remove("#" + hashtag.substring(1));
                 yield false;
             }
             default -> throw new IllegalArgumentException("Unexpected value: " + hashtag.charAt(0));
         };
+        tagMove();
+        return reading;
     }
     
     public void setProgressPercent(double progressPercent) {
@@ -175,5 +179,19 @@ public class Task extends Daily {
             tagString.append(s);
         }
         return new String[]{name, date, tagString.toString(), content.toString()};
+    }
+
+    public void tagMove() {
+    	Iterator<String> iter = tag.iterator();
+    	while(iter.hasNext()) {
+			tagPrint.add(iter.next());
+    	}
+    }
+    public static void tagPrint() {
+		System.out.println("태그 리스트");
+    	Iterator<String> iter = tagPrint.iterator();
+    	while(iter.hasNext()) {
+    		System.out.println(" "+iter.next());
+    	}
     }
 }

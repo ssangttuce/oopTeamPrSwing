@@ -57,6 +57,7 @@ public class Dashboard {
             System.out.format("\t3. 일정 수정\n");
             System.out.format("\t4. 일정 추가\n");
             System.out.format("\t5. 일정 삭제\n");
+            System.out.format("\t6. 태그 확인\n");
             menuNum = scan.nextInt();
             scan.nextLine();
             if (menuNum == 0)
@@ -80,6 +81,9 @@ public class Dashboard {
                     taskMgr.mList.remove(tskNum - 1);
                     System.out.println("삭제되었습니다.");
                     classify();
+                }
+                case 6 -> {
+            	   Task.tagPrint();
                 }
             }
         }
