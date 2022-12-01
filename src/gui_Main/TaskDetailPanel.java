@@ -322,10 +322,12 @@ public class TaskDetailPanel extends JPanel {
         content.setForeground(Color.WHITE);
         content.setHorizontalAlignment(JLabel.LEFT);
 
-        String contentStr = task.getContent();
+        String contentStr = task.getContent().replaceAll("_", "\n");
+        contentInsert.setColumns(35);
         contentInsert.insert(contentStr, contentInsert.getCaretPosition());
         contentInsert.setForeground(Color.WHITE);
         contentInsert.setCaretColor(Color.WHITE);
+        contentInsert.setAutoscrolls(true);
         contentInsert.setMinimumSize(new Dimension(360, 60));
         contentInsert.setPreferredSize(new Dimension(360, 60));
         contentInsert.setMaximumSize(new Dimension(360, 60));
@@ -355,7 +357,8 @@ public class TaskDetailPanel extends JPanel {
                                 tagInsert.getText() + " -\n" +
                                 startDatePrint.getText() + "\n" +
                                 endDatePrint.getText() + "\n" +
-                                contentInsert.getText()
+                                "다시쓰기" + "\n" +
+                                contentInsert.getText().replaceAll("\n", "_")
                 );
                 task.setName(scan);
                 while (task.setTag(scan)) {
@@ -383,6 +386,7 @@ public class TaskDetailPanel extends JPanel {
                 importance.setText(task.getImportanceLabel());
                 importanceEditBtn.setBackground(task.getImportanceColor());
                 prgBar.setValue(task.getProgressPercent());
+                contentInsert.setText(task.getContent().replaceAll("_", "\n"));
                 detail.dispose();
             }
         });

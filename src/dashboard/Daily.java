@@ -26,7 +26,7 @@ public class Daily implements Manageable {
         System.out.print("\b".repeat("일정 내용을 입력하세요.".length()));
         if (rewrite.equals("다시쓰기")) {
             this.content.delete(0, content.length());
-            this.content.append(scan.next());
+            this.content.append(scan.nextLine());
         } else {
             this.content.append(rewrite);
         }
